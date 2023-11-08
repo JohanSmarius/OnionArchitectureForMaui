@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TiramisuApp.Models
 {
-    internal class ClothingRequest
+    public class ClothingRequest
     {
         public int Id { get; set; }
 

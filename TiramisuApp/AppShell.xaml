@@ -19,8 +19,10 @@
             <ShellContent
        Title="Openstaande aanvragen"
        ContentTemplate="{DataTemplate local:OpenRequests}"
-       Route="Openstaande aanvragen" />
+       Route="OpenRequests" />
         </Tab>
+        
+        
     </TabBar>
         
  
