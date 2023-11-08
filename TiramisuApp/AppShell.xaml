@@ -17,9 +17,9 @@
 
         <Tab Title="OtherPage">
             <ShellContent
-       Title="OtherPage"
-       ContentTemplate="{DataTemplate local:OtherPage}"
-       Route="OtherPage" />
+       Title="Openstaande aanvragen"
+       ContentTemplate="{DataTemplate local:OpenRequests}"
+       Route="Openstaande aanvragen" />
         </Tab>
     </TabBar>
         
