@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace TiramisuApp.Models
+namespace TiramisuService.Models
 {
     public class ClothingRequest
     {
@@ -18,11 +17,5 @@ namespace TiramisuApp.Models
         public int Age { get; set; }
 
         public string RequestedClothes { get; set; }
-    }
-
-    [JsonSerializable(typeof(List<ClothingRequest>))]
-    internal sealed partial class ClothingContext : JsonSerializerContext
-    {
-
     }
 }
