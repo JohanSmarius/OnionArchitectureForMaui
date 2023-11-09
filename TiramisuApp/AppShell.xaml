@@ -11,11 +11,11 @@
         <Tab Title="Main">
             <ShellContent
     Title="Home"
-    ContentTemplate="{DataTemplate local:MainPage}"
+    ContentTemplate="{DataTemplate local:NewRequest}"
     Route="MainPage" />
         </Tab>
 
-        <Tab Title="OtherPage">
+        <Tab Title="Openstaande aanvragen">
             <ShellContent
        Title="Openstaande aanvragen"
        ContentTemplate="{DataTemplate local:OpenRequests}"

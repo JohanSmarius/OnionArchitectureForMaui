@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:TiramisuApp.ViewModels"
              x:Class="TiramisuApp.NewRequest"
              x:DataType="viewmodel:NewRequestViewModel"
-             Title="NewRequest">
+             Title="Nieuwe aanvraag">
     
     
     <VerticalStackLayout>
@@ -16,11 +16,24 @@
             Text="{Binding Age}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
         <Label Text="Maat"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Editor Text="{Binding Size}" VerticalOptions="Center" 
-HorizontalOptions="Center" />
-        
+        <Editor Text="{Binding Size}" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+        <Label Text="Gewenste kleding"
+            VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        <Editor Text="{Binding Clothes}" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            AutoSize="TextChanges"/>
+
+        <Button Text="Toevoegen" Command="{Binding AddNewRequetCommand}" />
+
+
     </VerticalStackLayout>
 </ContentPage>

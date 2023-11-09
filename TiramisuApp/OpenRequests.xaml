@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:TiramisuApp.ViewModels"
              x:Class="TiramisuApp.OpenRequests"
              x:DataType="viewmodel:OpenRequestsViewModel"
-             Title="OpenRequests">
+             Title="Openstaande aanvragen">
     
     <ContentPage.Resources>
         <ResourceDictionary>
