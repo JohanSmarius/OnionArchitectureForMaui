@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TiramisuApp.Models
+namespace TiramisuService.Models
 {
     public enum Gender
     {

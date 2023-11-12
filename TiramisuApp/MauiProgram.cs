@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using TiramisuApp.ViewModels;
 
 namespace TiramisuApp
 {
@@ -18,7 +19,7 @@ namespace TiramisuApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddTransient<OpenRequestsViewModel>();
             return builder.Build();
         }
     }
