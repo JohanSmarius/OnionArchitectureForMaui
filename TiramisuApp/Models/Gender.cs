@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TiramisuApp.Models
 {
-    internal enum Gender
+    public enum Gender
     {
         Girl = 0,
         Boy = 1,
