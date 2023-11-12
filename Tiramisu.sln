@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiramisuService", "Tiramisu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{0994EF90-5361-41C4-9CA0-FBF58ECB812E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C3F4B8B6-9177-4CCC-93CA-0A5475C4000F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{0994EF90-5361-41C4-9CA0-FBF58ECB812E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0994EF90-5361-41C4-9CA0-FBF58ECB812E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0994EF90-5361-41C4-9CA0-FBF58ECB812E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F4B8B6-9177-4CCC-93CA-0A5475C4000F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F4B8B6-9177-4CCC-93CA-0A5475C4000F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F4B8B6-9177-4CCC-93CA-0A5475C4000F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F4B8B6-9177-4CCC-93CA-0A5475C4000F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
