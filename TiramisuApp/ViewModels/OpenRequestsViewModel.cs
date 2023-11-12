@@ -25,18 +25,23 @@ namespace TiramisuApp.ViewModels
         async Task GetOpenRequestsAsync()
         {
             OpenRequests.Clear();
-            OpenRequests.Add(new ClothingRequest { Age = 8, Gender = Gender.Girl, DesiredSize = "M", RequestedClothes = "Shirt, Pants" });
-            OpenRequests.Add(new ClothingRequest { Age = 12, Gender = Gender.Girl, DesiredSize = "L", RequestedClothes = "Coat" });
+            OpenRequests.Add(new ClothingRequest { Age = 6, Gender = Gender.Girl, DesiredSize = "M", RequestedClothes = "Shirt, Pants" });
+            OpenRequests.Add(new ClothingRequest { Age = 10, Gender = Gender.Girl, DesiredSize = "L", RequestedClothes = "Coat" });
 
-            //using var client = new HttpClient();
-            //var response = await client.GetAsync("https://clothingrequestservice.azurewebsites.net/clothingrequest");
-            //if (response.IsSuccessStatusCode) 
-            //{
-            //    var list = await response.Content.ReadFromJsonAsync(ClothingContext.Default.ClothingRequest);
-          
-            //}
-            
+            using var client = new HttpClient();
+            var response = await client.GetAsync("https://clothingrequestservice.azurewebsites.net/clothingrequest");
+            if (response.IsSuccessStatusCode)
+            {
+                var rawReponse = await response.Content.ReadAsStringAsync();
 
+                var list = JsonSerializer.Deserialize<List<ClothingRequest>>(rawReponse);
+
+                OpenRequests.Clear();
+                foreach (var item in list)
+                {
+                    OpenRequests.Add(item);
+                }
+            }
         }
     }
 }

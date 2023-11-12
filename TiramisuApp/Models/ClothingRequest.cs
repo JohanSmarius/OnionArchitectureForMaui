@@ -11,12 +11,16 @@ namespace TiramisuApp.Models
     {
         public int Id { get; set; }
 
+        [JsonPropertyName("gender")]
         public Gender Gender { get; set; }
 
+        [JsonPropertyName("desiredSize")]
         public string DesiredSize { get; set; }
 
+        [JsonPropertyName("age")]
         public int Age { get; set; }
 
+        [JsonPropertyName("requestedClothes")]
         public string RequestedClothes { get; set; }
     }
 
