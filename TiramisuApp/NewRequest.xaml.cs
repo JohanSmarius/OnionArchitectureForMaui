@@ -4,10 +4,10 @@ namespace TiramisuApp;
 
 public partial class NewRequest : ContentPage
 {
-	public NewRequest()
+	public NewRequest(NewRequestViewModel viewModel)
 	{
 		InitializeComponent();
 
-		BindingContext = new NewRequestViewModel();
+		BindingContext = viewModel;
 	}
 }

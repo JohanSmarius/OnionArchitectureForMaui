@@ -9,13 +9,37 @@ namespace TiramisuApp.Models
 {
     public class ClothingRequest
     {
+        private string desiredSize;
+
         public int Id { get; set; }
 
         [JsonPropertyName("gender")]
         public Gender Gender { get; set; }
 
         [JsonPropertyName("desiredSize")]
-        public string DesiredSize { get; set; }
+        public string DesiredSize {
+            get => desiredSize;
+            set 
+            {
+                int size;
+                if (int.TryParse(value, out size))
+                {
+                    if (size >= 50 && size <= 168)
+                    {
+                        desiredSize = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(DesiredSize));
+                    }
+                }
+                else
+                {
+                    desiredSize = value;
+                }
+                
+            } 
+        }
 
         [JsonPropertyName("age")]
         public int Age { get; set; }
