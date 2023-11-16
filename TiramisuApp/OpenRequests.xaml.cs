@@ -1,16 +1,14 @@
-using TiramisuApp.Models;
+using Domain;
 using TiramisuApp.ViewModels;
 
 namespace TiramisuApp;
 
 public partial class OpenRequests : ContentPage
 {
-
-
-	public OpenRequests()
+    public OpenRequests(OpenRequestsViewModel viewModel)
 	{
 		InitializeComponent();
 
-        BindingContext = new OpenRequestsViewModel();
+        BindingContext = viewModel;
 	}
 }

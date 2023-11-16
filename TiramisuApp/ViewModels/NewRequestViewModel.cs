@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TiramisuApp.Models;
+using Domain;
 using TiramisuApp.Services;
 
 namespace TiramisuApp.ViewModels
@@ -29,10 +29,10 @@ namespace TiramisuApp.ViewModels
         }
 
         [RelayCommand]
-        async Task AddNewRequetAsync()
+        async Task AddNewRequestAsync()
         {
 
-            var ClothingReques = new ClothingRequest { DesiredSize = size, Age = age, RequestedClothes = clothes };
+            var ClothingReques = new ClothingRequest { DesiredSize = Size, Age = this.Age, RequestedClothes = Clothes };
 
             // In the future this request will be saved.
 

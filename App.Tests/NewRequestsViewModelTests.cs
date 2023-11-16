@@ -12,7 +12,7 @@ namespace App.Tests
             var mockNavigationService = new Mock<INavigationService>();
             var sut = new NewRequestViewModel(mockNavigationService.Object);
 
-            sut.AddNewRequetCommand.Execute(null);
+            sut.AddNewRequestCommand.Execute(null);
 
             mockNavigationService.Verify(x => x.NavigateAsync("//OpenRequests"), Times.Once);
         }

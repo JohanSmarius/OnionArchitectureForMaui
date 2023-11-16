@@ -72,4 +72,14 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DomainService\DomainService.csproj" />
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
+	  <ProjectReference Include="..\WebServiceInfrastructure\WebServiceInfrastructure.csproj" />
+	</ItemGroup>
+
 </Project>

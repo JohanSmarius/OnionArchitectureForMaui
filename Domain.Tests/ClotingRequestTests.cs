@@ -1,4 +1,4 @@
-using TiramisuApp.Models;
+using Domain;   
 
 namespace Domain.Tests
 {

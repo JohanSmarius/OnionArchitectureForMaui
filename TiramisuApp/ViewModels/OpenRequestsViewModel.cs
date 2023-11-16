@@ -8,17 +8,20 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using TiramisuApp.Models;
+using Domain;
+using DomainService;
 
 namespace TiramisuApp.ViewModels
 {
     public partial class OpenRequestsViewModel : ObservableObject
     {
+        private readonly IRequestRepository _requestRepository;
+
         public ObservableCollection<ClothingRequest> OpenRequests { get; } = new();
 
-        public OpenRequestsViewModel()
+        public OpenRequestsViewModel(IRequestRepository requestRepository)
         {
-
+            this._requestRepository = requestRepository;
         }
 
         [RelayCommand]
@@ -28,20 +31,12 @@ namespace TiramisuApp.ViewModels
             OpenRequests.Add(new ClothingRequest { Age = 6, Gender = Gender.Girl, DesiredSize = "M", RequestedClothes = "Shirt, Pants" });
             OpenRequests.Add(new ClothingRequest { Age = 10, Gender = Gender.Girl, DesiredSize = "L", RequestedClothes = "Coat" });
 
-            using var client = new HttpClient();
-            var response = await client.GetAsync("https://clothingrequestservice.azurewebsites.net/clothingrequest");
-            if (response.IsSuccessStatusCode)
+            var requestsFromServer = await _requestRepository.GetOpenRequestsAsync();
+            foreach (var request in requestsFromServer)
             {
-                var rawReponse = await response.Content.ReadAsStringAsync();
-
-                var list = JsonSerializer.Deserialize<List<ClothingRequest>>(rawReponse);
-
-                OpenRequests.Clear();
-                foreach (var item in list)
-                {
-                    OpenRequests.Add(item);
-                }
+                OpenRequests.Add(request);
             }
+
         }
     }
 }
