@@ -17,10 +17,9 @@ namespace TiramisuApp.Models
         public Gender Gender { get; set; }
 
         [JsonPropertyName("desiredSize")]
-        public string DesiredSize
-        {
+        public string DesiredSize {
             get => desiredSize;
-            set
+            set 
             {
                 int size;
                 if (int.TryParse(value, out size))
@@ -38,10 +37,9 @@ namespace TiramisuApp.Models
                 {
                     desiredSize = value;
                 }
-
-            }
+                
+            } 
         }
-
 
         [JsonPropertyName("age")]
         public int Age { get; set; }

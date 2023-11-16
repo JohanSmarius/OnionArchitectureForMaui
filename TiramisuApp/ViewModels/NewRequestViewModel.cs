@@ -6,11 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TiramisuApp.Models;
+using TiramisuApp.Services;
 
 namespace TiramisuApp.ViewModels
 {
     public partial class NewRequestViewModel : ObservableObject
     {
+        private readonly INavigationService _navigationService;
+
         [ObservableProperty]
         int age;
 
@@ -20,6 +23,11 @@ namespace TiramisuApp.ViewModels
         [ObservableProperty]
         string clothes;
 
+        public NewRequestViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
         [RelayCommand]
         async Task AddNewRequetAsync()
         {
@@ -27,9 +35,8 @@ namespace TiramisuApp.ViewModels
             var ClothingReques = new ClothingRequest { DesiredSize = size, Age = age, RequestedClothes = clothes };
 
             // In the future this request will be saved.
-            await Shell.Current.DisplayAlert("Melding", "Aanvraag toegevoegd", "Cancel");
 
-            await Shell.Current.GoToAsync("//OpenRequests");
+            await _navigationService.NavigateAsync("//OpenRequests");
         
         }
     }
