@@ -24,6 +24,7 @@ namespace TiramisuApp
             builder.Services.AddTransient<OpenRequestsViewModel>();
             builder.Services.AddTransient<NewRequestViewModel>();
             builder.Services.AddTransient<INavigationService, NavigationService>();
+            builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
             return builder.Build();
         }
     }
