@@ -22,7 +22,7 @@ namespace TiramisuApp.ViewModels
         }
 
         [RelayCommand]
-        async Task GetOpenRequestsAsync()
+        public async Task GetOpenRequestsAsync()
         {
             OpenRequests.Clear();
             OpenRequests.Add(new ClothingRequest { Age = 6, Gender = Gender.Girl, DesiredSize = "M", RequestedClothes = "Shirt, Pants" });

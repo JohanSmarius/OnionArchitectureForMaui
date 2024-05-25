@@ -13,4 +13,10 @@ public partial class OpenRequests : ContentPage
 
         BindingContext = new OpenRequestsViewModel();
 	}
+
+	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+	{
+		base.OnNavigatedTo(args);
+		await (BindingContext as OpenRequestsViewModel).GetOpenRequestsAsync();
+	}
 }

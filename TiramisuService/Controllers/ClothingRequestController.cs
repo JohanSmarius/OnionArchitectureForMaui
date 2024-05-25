@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TiramisuService.Database;
 using TiramisuService.Models;
 
 namespace TiramisuService.Controllers
@@ -7,13 +8,27 @@ namespace TiramisuService.Controllers
     [Route("[controller]")]
     public class ClothingRequestController : ControllerBase
     {
+        private readonly ClothingContext _context;
+
+        public ClothingRequestController(ClothingContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
         public IActionResult Index()
         {
-            var requests = new List<ClothingRequest>() {
-                new ClothingRequest { Age = 8, Gender = Gender.Girl, DesiredSize = "M", RequestedClothes = "Shirt, Pants" },
-                new ClothingRequest { Age = 12, Gender = Gender.Girl, DesiredSize = "L", RequestedClothes = "Coat" } };
-            
-            return Ok(requests);
+            var result = _context.ClothingRequests;
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRequest(ClothingRequest request)
+        {
+            await _context.ClothingRequests.AddAsync(request);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }
