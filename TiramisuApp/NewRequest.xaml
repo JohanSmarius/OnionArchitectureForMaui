@@ -32,7 +32,7 @@
             HorizontalOptions="Center"
             AutoSize="TextChanges"/>
 
-        <Button Text="Toevoegen" Command="{Binding AddNewRequetCommand}" />
+        <Button Text="Toevoegen" Command="{Binding AddNewRequestCommand}" />
 
 
     </VerticalStackLayout>

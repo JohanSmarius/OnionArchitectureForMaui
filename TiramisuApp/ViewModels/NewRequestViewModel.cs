@@ -13,7 +13,7 @@ namespace TiramisuApp.ViewModels
     public partial class NewRequestViewModel : ObservableObject
     {
         private readonly INavigationService _navigationService;
-
+        private readonly IRequestService requestService;
         [ObservableProperty]
         int age;
 
@@ -23,18 +23,19 @@ namespace TiramisuApp.ViewModels
         [ObservableProperty]
         string clothes;
 
-        public NewRequestViewModel(INavigationService navigationService)
+        public NewRequestViewModel(INavigationService navigationService, IRequestService requestService)
         {
             _navigationService = navigationService;
+            this.requestService = requestService;
         }
 
         [RelayCommand]
-        async Task AddNewRequetAsync()
+        async Task AddNewRequestAsync()
         {
 
-            var ClothingReques = new ClothingRequest { DesiredSize = size, Age = age, RequestedClothes = clothes };
+            var ClothingRequest = new ClothingRequest { DesiredSize = size, Age = age, RequestedClothes = clothes };
 
-            // In the future this request will be saved.
+            await requestService.AddRequest(ClothingRequest);
 
             await _navigationService.NavigateAsync("//OpenRequests");
         

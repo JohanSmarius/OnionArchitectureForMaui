@@ -9,16 +9,19 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TiramisuApp.Models;
+using TiramisuApp.Services;
 
 namespace TiramisuApp.ViewModels
 {
     public partial class OpenRequestsViewModel : ObservableObject
     {
+        private readonly IRequestService requestService;
+
         public ObservableCollection<ClothingRequest> OpenRequests { get; } = new();
 
-        public OpenRequestsViewModel()
+        public OpenRequestsViewModel(IRequestService requestService)
         {
-
+            this.requestService = requestService;
         }
 
         [RelayCommand]
@@ -28,19 +31,10 @@ namespace TiramisuApp.ViewModels
             OpenRequests.Add(new ClothingRequest { Age = 6, Gender = Gender.Girl, DesiredSize = "M", RequestedClothes = "Shirt, Pants" });
             OpenRequests.Add(new ClothingRequest { Age = 10, Gender = Gender.Girl, DesiredSize = "L", RequestedClothes = "Coat" });
 
-            using var client = new HttpClient();
-            var response = await client.GetAsync("https://clothingrequestservice.azurewebsites.net/clothingrequest");
-            if (response.IsSuccessStatusCode)
+            await requestService.GetOpenRequests();
+            foreach (var request in requestService.OpenRequests)
             {
-                var rawReponse = await response.Content.ReadAsStringAsync();
-
-                var list = JsonSerializer.Deserialize<List<ClothingRequest>>(rawReponse);
-
-                OpenRequests.Clear();
-                foreach (var item in list)
-                {
-                    OpenRequests.Add(item);
-                }
+                OpenRequests.Add(request);
             }
         }
     }

@@ -5,18 +5,19 @@ namespace TiramisuApp;
 
 public partial class OpenRequests : ContentPage
 {
+    private readonly OpenRequestsViewModel openRequestsViewModel;
 
-
-	public OpenRequests()
+    public OpenRequests(OpenRequestsViewModel openRequestsViewModel)
 	{
 		InitializeComponent();
 
-        BindingContext = new OpenRequestsViewModel();
-	}
+        BindingContext = openRequestsViewModel;
+        this.openRequestsViewModel = openRequestsViewModel;
+    }
 
 	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
-		await (BindingContext as OpenRequestsViewModel).GetOpenRequestsAsync();
+		await openRequestsViewModel.GetOpenRequestsAsync();
 	}
 }

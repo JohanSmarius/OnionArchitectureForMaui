@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ClothingContext>();
+//builder.Services.AddDbContext<ClothingContext>();
 
 var app = builder.Build();
 

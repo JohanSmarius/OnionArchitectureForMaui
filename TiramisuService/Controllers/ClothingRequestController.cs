@@ -10,15 +10,33 @@ namespace TiramisuService.Controllers
     {
         private readonly ClothingContext _context;
 
-        public ClothingRequestController(ClothingContext context)
-        {
-            _context = context;
-        }
+        //public ClothingRequestController(ClothingContext context)
+        //{
+        //    _context = context;
+        //}
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var result = _context.ClothingRequests;
+            var result = new List<ClothingRequest>()
+            {
+                new ClothingRequest
+                {
+                    Id = 1,
+                    Age = 10,
+                    DesiredSize = "160",
+                    Gender  = Gender.Girl,
+                    RequestedClothes = "Shirt, Pants"
+                },
+                new ClothingRequest
+                {
+                    Id = 2,
+                    Age = 6,
+                    DesiredSize = "140",
+                    Gender = Gender.Girl,
+                    RequestedClothes = "Coat"
+                }
+            };
 
             return Ok(result);
         }
@@ -26,8 +44,8 @@ namespace TiramisuService.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRequest(ClothingRequest request)
         {
-            await _context.ClothingRequests.AddAsync(request);
-            await _context.SaveChangesAsync();
+            //await _context.ClothingRequests.AddAsync(request);
+            //await _context.SaveChangesAsync();
             return Ok();
         }
     }

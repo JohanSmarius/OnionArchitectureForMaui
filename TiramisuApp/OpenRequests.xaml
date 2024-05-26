@@ -7,7 +7,7 @@
              x:DataType="viewmodel:OpenRequestsViewModel"
              Title="Openstaande aanvragen">
     
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label" >
                 <Setter Property="FontSize" Value="Large" />
@@ -20,7 +20,7 @@
         </ResourceDictionary>
 
 
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <RefreshView Command="{Binding GetOpenRequestsCommand}">
     <VerticalStackLayout>
@@ -29,7 +29,7 @@
             
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:ClothingRequest">
-                <Frame Style="{StaticResource FrameKey}">
+                <Frame>
                     <VerticalStackLayout>
                         <HorizontalStackLayout>
                             <Label Text="{Binding DesiredSize}" Margin="0,0,100,0"/>

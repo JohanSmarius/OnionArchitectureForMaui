@@ -10,9 +10,10 @@ namespace App.Tests
         public void AddNewRequetAsync_Given_Correct_Input_Should_Navigate()
         {
             var mockNavigationService = new Mock<INavigationService>();
-            var sut = new NewRequestViewModel(mockNavigationService.Object);
+            var mockRequestService = new Mock<IRequestService>();
+            var sut = new NewRequestViewModel(mockNavigationService.Object, mockRequestService.Object);
 
-            sut.AddNewRequetCommand.Execute(null);
+            sut.AddNewRequestCommand.Execute(null);
 
             mockNavigationService.Verify(x => x.NavigateAsync("//OpenRequests"), Times.Once);
         }
