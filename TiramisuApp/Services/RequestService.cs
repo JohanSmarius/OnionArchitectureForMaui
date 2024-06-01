@@ -19,20 +19,35 @@ public class RequestService : IRequestService
 
     public async Task GetOpenRequests()
     {
-        if (await deviceStatus.IsOnline())
+        // Only get the requests if we don't have them already
+
+        if (OpenRequests == null)
         {
-            // If we do, get the requests from the server
-            OpenRequests = await clothingRepository.GetClothings();
-        }
-        else 
-        { 
-            // If we don't, get the requests from the cache
-            OpenRequests = await clothingCache.GetClothings();
+            // Check if we have network connection
+            if (await deviceStatus.IsOnline())
+            {
+                // If we do, get the requests from the server
+                OpenRequests = await clothingRepository.GetClothings();
+            }
+            else
+            {
+                // If we don't, get the requests from the cache
+                OpenRequests = await clothingCache.GetClothings();
+            }
         }
     }
     
     public async Task AddRequest(ClothingRequest request)
     {
+        // The collection can be null, so we need to initialize it
+        if (OpenRequests == null)
+        {
+               OpenRequests = new List<ClothingRequest>();
+        }
+
+        // Add the request to the in-memory cache
+        OpenRequests.Add(request);
+
         // Check if we have network connection
         if (await deviceStatus.IsOnline())
         {
